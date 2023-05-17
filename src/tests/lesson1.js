@@ -8,16 +8,15 @@ const main = () => {
 
   // 创建创世区块
   var genesisBlock = new Block(blockchain, 'root', 0, 'root')
-
   // 设置创世区块
   blockchain.genesis = genesisBlock
 
   // 构建区块
   var newBlock = new Block(
-    blockchain,
-    genesisBlock.hash,
+    blockchain,//这条链的名字
+    genesisBlock.hash,//上一个区块的hash
     1,
-    sha256(new Date().getTime().toString()).toString(),
+    sha256(new Date().getTime().toString()).toString(),//时间戳
   )
 
   blockchain.blocks[newBlock.hash] = newBlock
